@@ -19,7 +19,7 @@ function displayRecipes(recipes) {
 
 function saveRecipe(recipeId) {
     let savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
-    fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=5a8502e9d43d4cb195b558221c7f0a67`)
+    fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=ec253cb239a84cf183af31462e7e7411`)
         .then(response => response.json())
         .then(data => {
             savedRecipes.push(data);
@@ -34,7 +34,7 @@ function saveRecipe(recipeId) {
 
 function saveRecipe(recipe) {
     let savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
-    savedRecipes.push(recipe); // Add the new recipe to the array
+    savedRecipes.push(recipe); 
     localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes)); 
     alert('Recipe saved successfully!');
 }

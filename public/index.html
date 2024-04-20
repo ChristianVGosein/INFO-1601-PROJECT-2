@@ -15,51 +15,48 @@
             <h2>Get Started</h2>
             <p>Join us and discover thousands of recipes from around the world!</p>
             <div class="action-buttons">
-                <a href="login.html"><button id="loginbutton">Login</button></a>
-                <a href="home.html"><button id="signupbutton">Sign Up</button></a>
+                <a href="home.html"><button id="loginbutton">Login</button></a>
+                <a href="signup.html"><button id="signupbutton">Sign Up</button></a>
                 <button id="googlebutton">Continue With Google</button>
             </div>
             <script type="module">
-                // Import the functions you need from the SDKs you need
-                import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-                import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-                // TODO: Add SDKs for Firebase products that you want to use
-                // https://firebase.google.com/docs/web/setup#available-libraries
-              
-                // Your web app's Firebase configuration
-                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-                const firebaseConfig = {
-                  apiKey: "AIzaSyBtP4p--596UVd4tgLxmmAHmigB8XehtnI",
-                  authDomain: "aspexx-1354e.firebaseapp.com",
-                  projectId: "aspexx-1354e",
-                  storageBucket: "aspexx-1354e.appspot.com",
-                  messagingSenderId: "847114837385",
-                  appId: "1:847114837385:web:e3320d3986c216a8925558",
-                  measurementId: "G-MQ7V40NVVY"
-                };
-              
-                // Initialize Firebase
-                const app = initializeApp(firebaseConfig);
-                const auth = getAuth();
-                const provider = new GoogleAuthProvider();
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
-                const googlebutton= document.getElementById('googlebutton');
+    const firebaseConfig = {
+        apiKey: "AIzaSyBtP4p--596UVd4tgLxmmAHmigB8XehtnI",
+        authDomain: "aspexx-1354e.firebaseapp.com",
+        projectId: "aspexx-1354e",
+        storageBucket: "aspexx-1354e.appspot.com",
+        messagingSenderId: "847114837385",
+        appId: "1:847114837385:web:e3320d3986c216a8925558",
+        measurementId: "G-MQ7V40NVVY"
+    };
+    export default firebaseConfig;
 
-                const usersignin=async() =>{
-                    signInWithPopup(auth, provider)
-                    .then ((result) => {
-                        const user = result.user
-                        console.log(user);
-                         }) 
-                         .catch((error)=>{
-                            const errorCode=error.errorCode
-                            const errorMeassage= error.message
-                         })
-                }
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
 
-                googlebutton.addEventListener('click', usersignin);
+    const googlebutton = document.getElementById('googlebutton');
 
+    const userSignIn = async () => {
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            const user = result.user;
+            console.log("User signed in: ", user);
+        })
+        .catch((error) => {
+            console.error("Error signing in with Google: ", error.code, error.message);
+            alert("Failed to sign in: " + error.message);
+        });
+    }
 
+    if (googlebutton) {
+        googlebutton.addEventListener('click', userSignIn);
+    } else {
+        console.log('Google sign-in button not found');
+    }
               </script>
 
             
@@ -68,6 +65,5 @@
     <footer>
         © 2024 Aspexx. All rights reserved.
     </footer>
-    <script src="app.js"></script>
 </body>
 </html>

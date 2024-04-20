@@ -14,21 +14,24 @@
                 <option value="saved.html">Saved Recipes</option>
                 <option value="tracking.html">Meal Tracking</option>
             </select>
+            <a> </a>
+            <a href="index.html"><button id="logoutbutton">Logout</button></a>
             
         </nav>
     </header>
     <main>
-        <h2>Discover Recipes Based On Your Ingredients</h2>
-        <form>
-            <input type="text" id="ingredients" placeholder="Enter ingredients...">
-            <button type="submit">Search Recipes</button>
-            <script src="searchrecipes.js"></script>
+        <form id="recipeSearchForm">
+            <input type="text" id="ingredients" placeholder="Enter ingredients..." required>
+            <button type="submit">Search</button>
         </form>
         
-        <div>
+        <ul id="recipesList">
+        </ul>
+
+    <ul id="recipeDetails">
+    </ul>
+
             <h3>Recipe That Might Interest You!</h3>
-            
-            
             <ul id="recipeList"></ul>
                 <script>
                    document.addEventListener('DOMContentLoaded', function() {
@@ -36,7 +39,7 @@
 });
 
 function fetchRandomRecipes() {
-    const apiKey = '5a8502e9d43d4cb195b558221c7f0a67'; 
+    const apiKey = 'ec253cb239a84cf183af31462e7e7411'; 
     const url = `https://api.spoonacular.com/recipes/random?number=10&apiKey=${apiKey}`; 
 
     fetch(url)
@@ -47,7 +50,7 @@ function fetchRandomRecipes() {
         return response.json();
     })
     .then(data => {
-        displayRecipes(data.recipes);
+        displayRandomRecipes(data.recipes);
     })
     .catch(error => {
         console.error('Error fetching random recipes:', error);
@@ -55,7 +58,7 @@ function fetchRandomRecipes() {
     });
 }
 
-function displayRecipes(recipes) {
+function displayRandomRecipes(recipes) {
     const recipeList = document.getElementById('recipeList');
     recipeList.innerHTML = '';  
 
@@ -64,13 +67,13 @@ function displayRecipes(recipes) {
         item.innerHTML = `
             <strong>${recipe.title}</strong>
             <img src="${recipe.image}" alt="${recipe.title}" style="width:100px; height:100px;">
-            <p>${recipe.summary.replace(/<[^>]+>/g, '')}</p>  // Removes HTML tags from the summary
+            <p>${recipe.summary.replace(/<[^>]+>/g, '')}</p>
         `;
         recipeList.appendChild(item);
     });
 }
-                    </script>
-
+                 </script>
+                    
                     <script src="saverecipes.js"></script>
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
@@ -88,18 +91,13 @@ function displayRecipes(recipes) {
                             });
                         });
                         </script>
-
-
-            
-            
-                
-        </div>
+            </div>
     </main>
     <footer>
         © 2024 Aspexx. All rights reserved.
     </footer>
-
   <script src="navigation.js"></script>
+  <script src="searchrecipes.js"></script>
 </body>
 </html>
 
