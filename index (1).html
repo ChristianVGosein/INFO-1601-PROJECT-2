@@ -14,3 +14,14 @@
 </body>
 
 </html>
+
+
+<!-- document.addEventListener('DOMContentLoaded' , function(){
+
+  try{
+    let app = firebase.app();
+    let features = ['auth', 'database', 'messaging', 'storage']. filter (feature => typeof app[feature] ==='funtion');
+    document.getElementById('load').innerHTML = 'Firebase SDK Loaded with ${features.join(', ')}';
+  } catch(e){
+    console.error(e);
+    document.getElementById('load').innerHTML = 'Error Loading the Firebase SDK, check the console. '; -->

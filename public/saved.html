@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saved Recipes - Aspexx</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Aspexx</h1>
+        <nav>
+            <select onchange="switchPage(this.value);">
+                <option value="home.html">Home</option>
+                <option value="saved.html" selected>Saved Recipes</option>
+                <option value="tracking.html">Meal Tracking</option>
+            </select>
+            
+        </nav>
+    </header>
+    <main>
+        <h2>Your Saved Recipes</h2>
+
+ 
+        <ul id="savedRecipeList"></ul>
+        <script src="saverecipes.js"></script> -->
+
+         <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedRecipeList = document.getElementById('savedRecipeList');
+            const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+        
+            savedRecipes.forEach(recipe => {
+                const item = document.createElement('li');
+                item.innerHTML = `
+                    <strong>${recipe.title}</strong>
+                    <img src="${recipe.image}" alt="${recipe.title}" style="width:100px; height:100px;">
+                    <p>${recipe.summary.replace(/<[^>]+>/g, '')}</p>
+                `;
+                savedRecipeList.appendChild(item);
+            });
+        });
+        </script>
+        
+    </main>
+    <footer>
+        © 2024 Aspexx. All rights reserved.
+    </footer>
+
+  <script src="navigation.js"></script>
+</body>
+</html>
