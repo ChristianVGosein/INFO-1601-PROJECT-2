@@ -22,6 +22,7 @@
         <form>
             <input type="text" id="ingredients" placeholder="Enter ingredients...">
             <button type="submit">Search Recipes</button>
+            <script src="searchrecipes.js"></script>
         </form>
         
         <div>
@@ -35,8 +36,8 @@
 });
 
 function fetchRandomRecipes() {
-    const apiKey = '5a8502e9d43d4cb195b558221c7f0a67';  // Replace 'YOUR_API_KEY' with your actual API key from Spoonacular
-    const url = `https://api.spoonacular.com/recipes/random?number=10&apiKey=${apiKey}`; // Fetches 10 random recipes
+    const apiKey = '5a8502e9d43d4cb195b558221c7f0a67'; 
+    const url = `https://api.spoonacular.com/recipes/random?number=10&apiKey=${apiKey}`; 
 
     fetch(url)
     .then(response => {
@@ -56,7 +57,7 @@ function fetchRandomRecipes() {
 
 function displayRecipes(recipes) {
     const recipeList = document.getElementById('recipeList');
-    recipeList.innerHTML = '';  // Clear previous entries
+    recipeList.innerHTML = '';  
 
     recipes.forEach(recipe => {
         const item = document.createElement('li');

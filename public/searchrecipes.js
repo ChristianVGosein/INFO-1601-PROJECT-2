@@ -21,27 +21,24 @@ function fetchRecipes(ingredients) {
 
 function displayRecipes(recipes) {
     const recipeList = document.getElementById('recipeList');
-    recipeList.innerHTML = '';  // Clear previous entries
+    recipeList.innerHTML = '';  
 
     recipes.forEach(recipe => {
-        // Create elements individually to avoid issues with innerHTML
+       
         const elem = document.createElement('div');
 
-        // Create and configure the image element
+       
         const img = document.createElement('img');
         img.src = recipe.image;
         img.alt = recipe.title;
-        img.style.height = '100px';  // Apply styles directly
+        img.style.height = '100px';  
 
-        // Create and configure the paragraph element for the title
         const title = document.createElement('p');
-        title.textContent = recipe.title;  // Use textContent for safe text insertion
+        title.textContent = recipe.title;  
 
-        // Append elements to the container div
+       
         elem.appendChild(img);
         elem.appendChild(title);
-
-        // Append the container div to the recipe list
         recipeList.appendChild(elem);
     });
 }

@@ -1,6 +1,6 @@
 function displayRecipes(recipes) {
     const recipeList = document.getElementById('recipeList');
-    recipeList.innerHTML = '';  // Clear previous entries
+    recipeList.innerHTML = '';  
 
     recipes.forEach(recipe => {
         const item = document.createElement('li');
@@ -35,6 +35,6 @@ function saveRecipe(recipeId) {
 function saveRecipe(recipe) {
     let savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
     savedRecipes.push(recipe); // Add the new recipe to the array
-    localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes)); // Save back to local storage
+    localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes)); 
     alert('Recipe saved successfully!');
 }
